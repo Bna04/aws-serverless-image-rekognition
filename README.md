@@ -58,9 +58,9 @@ The backend code (`lambda_function.py`) is relatively short, but it handles a fe
 ```text
 .
 ├── frontend/
-│   └── index.html
-│       ├── (Embedded CSS Styles)
-│       └── (Embedded JS Logic)
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
 ├── backend/
 │   └── lambda_function.py
 └── README.md
