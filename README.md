@@ -3,25 +3,17 @@
 <img width="1912" height="965" alt="image" src="https://github.com/user-attachments/assets/df39ae2a-94a8-449b-bde3-4fb9db0e7813" />
 
 
-I built this project because I wanted to get some hands-on experience connecting different AWS services without managing any servers, so the initial goal was to create a system that automatically tags images as soon as I upload them via a web interface.
+Core Architecture:
 
-I made sure it used an **Event-Driven Architecture**, which means the system is completely idle, as it doesn't cost anything until a file is actually uploaded.
+Storage & Hosting: Frontend hosted statically on Amazon S3.
 
-## Architecture
+Secure Uploads: API Gateway and Lambda generate pre-signed URLs, allowing direct browser-to-S3 uploads to bypass API payload limits.
 
-**Frontend -> S3 (Upload) -> Lambda (Trigger) -> Rekognition (AI) -> DynamoDB (Save)**
+Event-Driven Processing: S3 PUT events trigger an asynchronous AWS Lambda function.
 
+AI Vision: The Lambda function orchestrates Amazon Rekognition to extract object and scene labels.
 
-
-- **Frontend** I use a simple sleek web page to select and upload the image.
-- **Trigger** The file lands in an S3 bucket.
-- **The Code:** This fires an event that wakes up my Lambda function.
-- **Brains** Lambda sends the image to Amazon Rekognition to detect labels (like "insect", "Car", "Beach").
-- **Database** The results are then saved into a DynamoDB table so I can have a look at them later.
-- **Display** The frontend asks **API Gateway** for the results to show them on the screen.
-
-> **Security** I implemented a secure upload pattern, so instead of sending the image file through the API Gateway, which can be expensive and slow, I created a second Lambda function that generates S3 Presigned URLs, Thus allowing the frontend to upload directly to the S3 bucket securely without exposing my AWS credentials.
-
+NoSQL Database: Metadata and labels are indexed in DynamoDB for fast frontend retrieval.
 ## Tech Stack
 
 * **Frontend:** HTML5, CSS3, JavaScript (Single-file implementation hosted on S3)
