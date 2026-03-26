@@ -3,7 +3,7 @@
 <img width="1912" height="965" alt="image" src="https://github.com/user-attachments/assets/df39ae2a-94a8-449b-bde3-4fb9db0e7813" />
 
 
-Core Architecture:
+## Core Architecture:
 
 Storage & Hosting: Frontend hosted statically on Amazon S3.
 
