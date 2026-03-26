@@ -1,5 +1,8 @@
 # Serverless Image Analysis Pipeline
 
+<img width="1912" height="965" alt="image" src="https://github.com/user-attachments/assets/df39ae2a-94a8-449b-bde3-4fb9db0e7813" />
+
+
 I built this project because I wanted to get some hands-on experience connecting different AWS services without managing any servers, so the initial goal was to create a system that automatically tags images as soon as I upload them via a web interface.
 
 I made sure it used an **Event-Driven Architecture**, which means the system is completely idle, as it doesn't cost anything until a file is actually uploaded.
