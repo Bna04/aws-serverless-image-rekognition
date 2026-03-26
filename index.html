@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudGallery</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5 7.51-3.22-3.22-7.51-7.51 3.22 3.22 7.51z"/>
+            </svg>
+            Cloud<span>Gallery</span>
+        </div>
+        <div class="search-container">
+            <span class="search-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </span>
+            <input type="text" id="search" placeholder="Search images..." onkeyup="filter()">
+        </div>
+        <div class="nav-links">
+            <button class="nav-item active" data-tab="gallery" onclick="tab('gallery')">Gallery</button>
+            <button class="nav-item" data-tab="about" onclick="tab('about')">About</button>
+        </div>
+    </div>
+</nav>
+
+<div id="view-gallery">
+    <div class="hero">
+        <h1>Visual Intelligence</h1>
+        <p>Serverless image analysis powered by Amazon Rekognition.</p>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn btn-ghost" onclick="toggleTheme()">Theme</button>
+        <button class="btn btn-ghost" onclick="init()">Refresh</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('upload').click()">Pick File</button>
+        <button id="upload-btn" class="btn btn-primary" onclick="triggerUpload()" disabled style="opacity: 0.5; cursor: not-allowed;">Upload</button>
+    </div>
+
+    <div class="container">
+        <div id="grid" class="masonry"></div>
+    </div>
+</div>
+
+<div id="view-about" class="container about-section">
+    <h2>Architecture Overview</h2>
+    <p style="color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">
+        This platform leverages a purely event-driven architecture on AWS and uploads to S3 trigger Lambda functions which orchestrate computer vision analysis and metadata storage in DynamoDB.
+    </p>
+    <div class="req-box">
+        <strong>Supported Formats:</strong> Please ensure all uploads are standard .JPG files.
+    </div>
+    <h3 style="margin-top: 2rem;">Stack</h3>
+    <ul style="color: var(--text-light); line-height: 2;">
+        <li>AWS S3 & Lambda</li>
+        <li>Amazon Rekognition</li>
+        <li>DynamoDB</li>
+        <li>API Gateway</li>
+    </ul>
+</div>
+
+<input type="file" id="upload" hidden accept="image/jpeg, image/jpg" onchange="handleFileSelect(this)">
+
+<div id="modal" class="modal" onclick="closeModal()">
+    <button class="close-btn">&times;</button>
+    <img id="modal-img">
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
