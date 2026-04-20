@@ -43,8 +43,7 @@ The backend code (`lambda_function.py`) is relatively short, but it handles a fe
 
 - **"Ghost Image" Fix:** I noticed that if I deleted a file from the S3 bucket, the website would try to load it and show a "broken image" icon because the metadata still existed in the database, which I fixed by adding a `onerror` event handler to the image tags in my HTML, so if an image fails to load, it automatically hides itself from the gallery.
 
-- **Frontend Polish:** To give the site a professional feel, I implemented a **Masonry Grid layout** using CSS columns, a real-time **Dark Mode toggle**, and custom **Skeleton Loading** animations. *Note: For this project, I kept the CSS and JS embedded within the HTML for simpler S3 deployment, though in a larger production environment, I would separate these concerns into distinct files.*
-
+- **Frontend Polish:** To give the site a professional feel, I implemented a **Masonry Grid layout** using CSS columns, a real-time **Dark Mode toggle**, and custom **Skeleton Loading** animations.
 ## 📂 Project Structure
 
 ```text
