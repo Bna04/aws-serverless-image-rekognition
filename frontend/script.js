@@ -1,9 +1,13 @@
 const API = {
-    get: 'https://sy1x5211s6.execute-api.eu-west-2.amazonaws.com/default/GetImage',
-    put: 'https://87j6oylht9.execute-api.eu-west-2.amazonaws.com/default/GeneratePresignedURL',
-    s3: 'https://image-analysis-london-belal-2004.s3.eu-west-2.amazonaws.com'
+    get: 'YOUR_GET_API_GATEWAY_URL',
+    put: 'YOUR_PUT_API_GATEWAY_URL',
+    s3: 'YOUR_S3_BUCKET_URL'
 };
 
+## Setup
+Replace the placeholder values in script.js with your own 
+API Gateway endpoints and S3 bucket URL before deploying.
+    
 let store = [];
 let selectedFile = null;
 
